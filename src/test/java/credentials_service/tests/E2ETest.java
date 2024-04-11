@@ -1,4 +1,4 @@
-package credentials_service;
+package credentials_service.tests;
 
 import com.github.javafaker.Faker;
 import io.restassured.RestAssured;
@@ -10,8 +10,7 @@ import org.junit.jupiter.api.*;
 
 import static io.restassured.RestAssured.given;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class UserTest {
+public class E2ETest {
 
     RequestSpecification spec;
     User user;
@@ -31,7 +30,6 @@ public class UserTest {
     }
 
     @Test
-    @Order(1)
     public void addUser() {
         user = User.builder()
                 .username("newUser" + new Faker().name().username())

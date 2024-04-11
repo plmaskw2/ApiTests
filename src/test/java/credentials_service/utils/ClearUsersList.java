@@ -1,4 +1,4 @@
-package credentials_service;
+package credentials_service.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
-public class GetUserTest {
+public class ClearUsersList {
 
     RequestSpecification spec;
 
@@ -29,24 +29,8 @@ public class GetUserTest {
     }
 
     @Test
-    public void getUser() {
-        User user;
-        String username = "user4604";
-
-        String model = given().log().all()
-                .pathParam("username", username)
-                .basePath("users/username/{username}")
-                .contentType("application/json")
-                .when().get().getBody().asString();
-
-        user = new Gson().fromJson(model, User.class);
-        System.out.println(user);
-    }
-
-    @Test
-    public void getUsers() {
-        Type listType = new TypeToken<List<User>>() {
-        }.getType();
+    public void clearUsersList() {
+        Type listType = new TypeToken<List<User>>() {}.getType();
 
         String model = given().log().all()
                 .basePath("users")
